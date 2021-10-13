@@ -23,9 +23,10 @@ class RegisterController extends Controller
         $token = $user->createToken('auth_token')->accessToken;
 
         return response()->json([
-            'user' => $user,
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'user' => $user,
+            'user_type' => $user->type
         ]);
 
     }

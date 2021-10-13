@@ -13,15 +13,15 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        if (!Auth::attempt($request->only('email', 'password'))) {
-            return response()->json([
-                'message' => Messages::getMessage('login_error')
-            ], 401);
+        if(!Auth::check()){
+            if (!Auth::guard('web')->attempt($request->only('email', 'password'))) {
+                return response()->json([
+                    'message' => Messages::getMessage('login_error')
+                ], 401);
+            }
         }
 
         $user = User::where('email', $request['email'])->firstOrFail();
-
-        //$token = $user->createToken('auth_token')->plainTextToken;
 
         $token = $user->createToken('auth_token')->accessToken;
 
@@ -29,7 +29,8 @@ class LoginController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
             'user' => $user,
-            'user_type' => $user->type
+            'user_type' => $user->type,
+            'avatar' => $user->image
         ]);
     }
 

@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->namespace('Api\Auth\Profile')->group(function(){
-    Route::post('profile', 'HomeController@register');
+
+Route::get('faq', 'Api\FaqController@index');
+
+Route::middleware('auth:api')->namespace('Api\Profile')->group(function(){
+    Route::post('profile', 'HomeController@index');
+
+    Route::post('profile/avatar-update', 'UserController@updateAvatar');
+    Route::post('profile/email-update', 'UserController@updateEmail');
+    Route::post('profile/password-update', 'UserController@updatePassword');
+    Route::post('profile/name-update', 'UserController@updateName');
 });
 
 Route::namespace('Api\Auth')->group(function(){
@@ -24,5 +32,6 @@ Route::namespace('Api\Auth')->group(function(){
 
 });
 
+Route::get('test', 'TestController@index')->middleware('auth:api');
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmailUpdateRequest;
+use App\Http\Requests\NameUpdateRequest;
 use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Traits\ImageTrait;
 use Illuminate\Http\Request;
@@ -56,21 +57,14 @@ class UserController extends Controller
     }
 
     // Update name
-    public function updateName(Request $request)
+    public function updateName(NameUpdateRequest $request)
     {
-        if($request->has('name') && $request->name != '')
-            $request->user()->name = $request->name;
-
-        if($request->has('description') && $request->description != '')
-            $request->user()->description = $request->description;
-
+        $request->user()->name = $request->name;
         $request->user()->save();
-
 
         return json_encode([
             'success' => true,
             'name' => $request->user()->name,
-            'description' => $request->user()->description
         ]);
     }
 

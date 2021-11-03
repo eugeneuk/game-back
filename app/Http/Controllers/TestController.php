@@ -2,15 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Game;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+
+// use Illuminate\Http\Request;
+use FedEx\RateService\Request;
+use FedEx\RateService\ComplexType;
+use FedEx\RateService\SimpleType;
+
 
 class TestController extends Controller
 {
 
-
     public function index()
     {
-        dd(123);
+        $prods = Product::query();
+
+        $prods = $prods->whereHas('results', function($q) {
+            $q->whereIn('field_id', [1,2,3]);
+        });
+
+        dd($prods->count());
     }
+
+
+
+
+
 }

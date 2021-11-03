@@ -14,7 +14,7 @@ trait ImageTrait{
     public function fileBase64Upload(Request $request)
     {
         $data = $request->image;
-
+        // File is coming in Base64 coding, so we need to convert it
         $data = $this->makeImageFromBas64($data);
 
         $file_name = $this->makeCircleAndSave($data);

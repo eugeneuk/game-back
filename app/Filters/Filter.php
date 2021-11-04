@@ -11,6 +11,9 @@ abstract class Filter
         if( !request()->has($this->filterName()) )
             return $next($request);
 
+        if( request()->has( $this->filterName() ) && request($this->filterName()) == 'all')
+            return $next($request);
+
         $builder = $next($request);
 
         return $this->applyFilter($builder);

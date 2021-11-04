@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Product;
+use App\Service\Search;
 use Illuminate\Support\Facades\Auth;
 
 // use Illuminate\Http\Request;
@@ -17,6 +18,9 @@ class TestController extends Controller
 
     public function index()
     {
+
+        dd((new Search())->handle());
+
         $prods = Product::query();
 
         $prods = $prods->whereHas('results', function($q) {

@@ -25,6 +25,7 @@ Route::get('get-types', 'Api\TaxonomyController@getTypes');
 
 Route::get('products/show/{product}', 'Api\ProductController@show');
 Route::get('products', 'Api\ProductController@index');
+Route::get('filters', 'Api\FiltersController@search');
 
 Route::middleware('auth:api')->namespace('Api')->group(function(){
     Route::post('profile', 'HomeController@index');

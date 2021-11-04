@@ -21,4 +21,20 @@ class Game extends Model
     {
         return $this->hasMany(Field::class);
     }
+
+
+    /*
+     *  Filters, @see /App/Filters
+     * use Laravel Pipelines funcitonal
+     */
+    public static function getFiltered()
+    {
+        return app(\Illuminate\Pipeline\Pipeline::class)
+            ->send(Product::query())
+            ->through([
+                \App\Filters\Search::class,
+                \App\Filters\Sort::class,
+            ])
+            ->thenReturn();
+    }
 }

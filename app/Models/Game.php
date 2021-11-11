@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\GameScope;
 
 class Game extends Model
 {
@@ -20,6 +21,16 @@ class Game extends Model
     public function fields()
     {
         return $this->hasMany(Field::class);
+    }
+
+    public function langs()
+    {
+        return $this->hasMany(Lang::class);
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new GameScope);
     }
 
 

@@ -39,7 +39,7 @@ class LoginController extends Controller
         return Auth::user();
     }
 
-    public function check(Request $request)
+    protected function check(Request $request)
     {
         if( !Auth::check() )
             return abort(404);

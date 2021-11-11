@@ -19,11 +19,10 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('price')->nullable()->default(0); // Price in Cents
 
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('game_id')->nullable();
-            $table->unsignedBigInteger('type_id')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('game_id')->nullable();
+            $table->foreignId('type_id')->nullable();
 
-            $table->index(['user_id', 'game_id', 'type_id']);
             $table->timestamps();
         });
     }

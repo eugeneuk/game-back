@@ -25,7 +25,7 @@ class UserController extends Controller
         $request->user()->image = $image['image'];
         $request->user()->save();
 
-        return json_encode([
+        return response()->json([
             'success' => true,
             'image' => $image['image']
         ]);
@@ -39,7 +39,7 @@ class UserController extends Controller
 
         $request->user()->email = $request->email;
         $request->user()->save();
-        return json_encode([
+        return response()->json([
             'success' => true,
             'email' => $request->user()->email
         ]);
@@ -53,7 +53,7 @@ class UserController extends Controller
 
         $request->user()->password = Hash::make($request->password);
         $request->user()->save();
-        return json_encode([
+        return response()->json([
             'success' => true
         ]);
     }
@@ -64,7 +64,7 @@ class UserController extends Controller
         $request->user()->name = $request->name;
         $request->user()->save();
 
-        return json_encode([
+        return response()->json([
             'success' => true,
             'name' => $request->user()->name,
         ]);

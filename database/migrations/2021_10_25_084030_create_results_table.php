@@ -15,9 +15,9 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('field_id')->nullable();
-            $table->unsignedBigInteger('content_id')->nullable();
+            $table->foreignId('product_id');
+            $table->foreignId('field_id')->nullable();
+            $table->foreignId('content_id')->nullable();
             $table->string('label')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();

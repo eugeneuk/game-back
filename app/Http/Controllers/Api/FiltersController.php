@@ -15,6 +15,6 @@ class FiltersController extends Controller
 
     public function filters()
     {
-
+        dd('ok');
     }
 }

@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function check(Request  $request)
     {
-        return json_encode(['success' =>Auth::check()]);
+        return response()->json(['success' =>Auth::check()]);
 
     }
 }

@@ -16,8 +16,8 @@ class CreateContentProductTable extends Migration
         Schema::create('content_product', function (Blueprint $table) {
             $table->id();
             $table->string('value')->nullable();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('content_id');
+            $table->foreignId('product_id');
+            $table->foreignId('content_id');
 
             $table->index(['product_id', 'content_id']);
             $table->timestamps();

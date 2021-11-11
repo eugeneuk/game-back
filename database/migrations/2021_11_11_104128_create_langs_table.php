@@ -15,10 +15,10 @@ class CreateLangsTable extends Migration
     {
         Schema::create('langs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('game_id')->nullable();
+            $table->foreignId('game_id');
             $table->string('lang')->nullable();
             $table->string('url')->nullable();
-            $table->unsignedBigInteger('linked_game_id')->nullable();
+            $table->foreignId('linked_game_id');
             $table->timestamps();
         });
     }

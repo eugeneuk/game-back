@@ -15,7 +15,7 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('game_id');
+            $table->foreignId('game_id');
             $table->string('label')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

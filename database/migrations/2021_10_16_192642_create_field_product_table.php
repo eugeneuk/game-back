@@ -16,8 +16,8 @@ class CreateFieldProductTable extends Migration
         Schema::create('field_product', function (Blueprint $table) {
             $table->id();
             $table->string('value')->nullable();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('field_id');
+            $table->foreignId('product_id');
+            $table->foreignId('field_id');
             $table->index(['product_id', 'field_id']);
             $table->timestamps();
         });

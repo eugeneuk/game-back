@@ -18,7 +18,7 @@ class ParserController extends Controller
         )->parseNames();
 
         $this->saveGameNames($game_names);
-        return true;
+        response()->json(['result' => true]);
     }
 
     public function saveGameNames($game_names)
@@ -30,6 +30,6 @@ class ParserController extends Controller
                 'letter' => ucfirst(Str::limit($item, 1, null))
             ]);
         }
-        return true;
+        return response()->json(['success' => true]);
     }
 }

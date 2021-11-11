@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         //If there are no fields, just return
         if(!$fields)
-            return json_encode(['success' => true, 'm' => 'Saved!']);
+            return response()->json(['success' => true, 'm' => 'Saved!']);
 
         //Else save fields
         foreach ($fields as $key => $value){
@@ -66,7 +66,7 @@ class ProductController extends Controller
             return $newFiledContent;
         }
 
-        return json_encode(['success' => true, 'm' => 'Saved!']);
+        return response()->json(['success' => true, 'm' => 'Saved!']);
     }
 
 
